@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Portal - EduVerse</title>
+    <link rel="stylesheet" href="parent-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduVerse</span>
+            </div>
+            <div class="breadcrumb">
+                <span>Parent Portal</span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search children, teachers, activities...">
+            </div>
+        </div>
+        <div class="nav-right">
+            <button class="nav-btn" id="notificationBtn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            <div class="profile-dropdown">
+                <button class="profile-btn">
+                    <img src="https://via.placeholder.com/32" alt="Profile" class="profile-img">
+                    <span>Sarah Johnson</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#"><i class="fas fa-user"></i> Profile Settings</a>
+                    <a href="#"><i class="fas fa-cog"></i> Preferences</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> Help & Support</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="nav-section">
+                    <div class="nav-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="fas fa-child"></i>
+                        <span>My Children</span>
+                        <span class="nav-badge">2</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Academic Progress</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Schedule & Events</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="fas fa-comments"></i>
+                        <span>Teacher Communication</span>
+                        <span class="nav-badge">5</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Fees & Payments</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="header-content">
+                    <h1>Welcome back, Sarah!</h1>
+                    <p>Here's what's happening with your children's education</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-calendar-plus"></i>
+                        Schedule Meeting
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Download Reports
+                    </button>
+                </div>
+            </div>
+
+            <!-- Children Overview -->
+            <section class="children-overview">
+                <h2>My Children</h2>
+                <div class="children-grid">
+                    <div class="child-card">
+                        <div class="child-header">
+                            <div class="child-avatar">
+                                <img src="https://via.placeholder.com/60" alt="Emma Johnson">
+                            </div>
+                            <div class="child-info">
+                                <h3>Emma Johnson</h3>
+                                <p>Grade 8 • Class 8A</p>
+                                <span class="status-badge good">Excellent Performance</span>
+                            </div>
+                        </div>
+                        <div class="child-stats">
+                            <div class="stat">
+                                <span class="stat-value">92%</span>
+                                <span class="stat-label">Overall Grade</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">98%</span>
+                                <span class="stat-label">Attendance</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Assignments Due</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="child-card">
+                        <div class="child-header">
+                            <div class="child-avatar">
+                                <img src="https://via.placeholder.com/60" alt="Alex Johnson">
+                            </div>
+                            <div class="child-info">
+                                <h3>Alex Johnson</h3>
+                                <p>Grade 5 • Class 5B</p>
+                                <span class="status-badge warning">Needs Attention</span>
+                            </div>
+                        </div>
+                        <div class="child-stats">
+                            <div class="stat">
+                                <span class="stat-value">78%</span>
+                                <span class="stat-label">Overall Grade</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">85%</span>
+                                <span class="stat-label">Attendance</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Assignments Due</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Academic Progress Chart -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Academic Progress Overview</h3>
+                        <div class="card-actions">
+                            <select class="time-filter">
+                                <option>Last 6 Months</option>
+                                <option>This Year</option>
+                                <option>All Time</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Communications -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Communications</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="communication-list">
+                            <div class="communication-item">
+                                <div class="comm-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Ms. Davis">
+                                </div>
+                                <div class="comm-content">
+                                    <div class="comm-header">
+                                        <span class="comm-sender">Ms. Davis (Math Teacher)</span>
+                                        <span class="comm-time">2 hours ago</span>
+                                    </div>
+                                    <p class="comm-message">Emma did excellent work on her algebra test. She scored 95%!</p>
+                                </div>
+                            </div>
+                            <div class="communication-item">
+                                <div class="comm-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Mr. Wilson">
+                                </div>
+                                <div class="comm-content">
+                                    <div class="comm-header">
+                                        <span class="comm-sender">Mr. Wilson (Science Teacher)</span>
+                                        <span class="comm-time">1 day ago</span>
+                                    </div>
+                                    <p class="comm-message">Alex missed the science project deadline. Please help him catch up.</p>
+                                </div>
+                            </div>
+                            <div class="communication-item">
+                                <div class="comm-avatar">
+                                    <img src="https://via.placeholder.com/40" alt="Principal">
+                                </div>
+                                <div class="comm-content">
+                                    <div class="comm-header">
+                                        <span class="comm-sender">Principal Johnson</span>
+                                        <span class="comm-time">3 days ago</span>
+                                    </div>
+                                    <p class="comm-message">Parent-teacher conference scheduled for next Friday at 3:00 PM.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Upcoming Events</h3>
+                        <a href="#" class="view-all">View Calendar</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="events-list">
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="day">15</span>
+                                    <span class="month">Dec</span>
+                                </div>
+                                <div class="event-details">
+                                    <h4>Parent-Teacher Conference</h4>
+                                    <p>Emma's quarterly review meeting</p>
+                                    <span class="event-time">3:00 PM - 4:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="day">18</span>
+                                    <span class="month">Dec</span>
+                                </div>
+                                <div class="event-details">
+                                    <h4>Science Fair</h4>
+                                    <p>Alex's project presentation</p>
+                                    <span class="event-time">10:00 AM - 2:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="day">22</span>
+                                    <span class="month">Dec</span>
+                                </div>
+                                <div class="event-details">
+                                    <h4>Winter Break Begins</h4>
+                                    <p>Last day of classes</p>
+                                    <span class="event-time">All Day</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fee Status -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Fee Status</h3>
+                        <button class="btn btn-sm btn-primary">Pay Now</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="fee-summary">
+                            <div class="fee-item">
+                                <span class="fee-label">Emma - Tuition Fee</span>
+                                <span class="fee-amount paid">$1,200 - Paid</span>
+                            </div>
+                            <div class="fee-item">
+                                <span class="fee-label">Alex - Tuition Fee</span>
+                                <span class="fee-amount pending">$1,000 - Due Dec 20</span>
+                            </div>
+                            <div class="fee-item">
+                                <span class="fee-label">Activity Fee</span>
+                                <span class="fee-amount paid">$150 - Paid</span>
+                            </div>
+                            <div class="fee-total">
+                                <span class="total-label">Outstanding Balance</span>
+                                <span class="total-amount">$1,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Modal -->
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Notifications</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Assignment Overdue</h4>
+                        <p>Alex has an overdue math assignment</p>
+                        <span class="notification-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Achievement Unlocked</h4>
+                        <p>Emma earned "Math Wizard" badge</p>
+                        <span class="notification-time">1 day ago</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Event Reminder</h4>
+                        <p>Parent-teacher conference tomorrow</p>
+                        <span class="notification-time">2 days ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="parent-dashboard.js"></script>
+</body>
+</html>

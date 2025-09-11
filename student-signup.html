@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Signup - EduVerse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        .signup-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+        .terms-checkbox input {
+            margin-top: 0.25rem;
+        }
+        .terms-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+        .terms-text a {
+            color: var(--student-primary);
+            text-decoration: none;
+        }
+        .terms-text a:hover {
+            text-decoration: underline;
+        }
+        .signup-success {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+        .success-message {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+        .success-subtitle {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="student-theme">
+    <div class="container">
+        <!-- Left Side - Branding -->
+        <div class="left-panel">
+            <div class="brand-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>EduVerse</h1>
+                </div>
+                <p class="tagline">Join thousands of students in your learning journey</p>
+                
+                <div class="illustration">
+                    <div class="education-graphic">
+                        <div class="planet">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="orbit orbit-1">
+                            <div class="satellite"><i class="fas fa-star"></i></div>
+                        </div>
+                        <div class="orbit orbit-2">
+                            <div class="satellite"><i class="fas fa-trophy"></i></div>
+                        </div>
+                        <div class="orbit orbit-3">
+                            <div class="satellite"><i class="fas fa-medal"></i></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-gamepad"></i>
+                        <span>Gamified Learning Experience</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Track Your Progress</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <span>Connect with Peers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Signup Form -->
+        <div class="right-panel">
+            <div class="login-content">
+                <div class="signup-form" id="signupFormContainer">
+                    <h2>Create Student Account</h2>
+                    <p class="subtitle">Join EduVerse and start your learning adventure</p>
+
+                    <form class="login-form" id="signupForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                                <div class="error-message"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                                <div class="error-message"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                            <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <i class="fas fa-eye password-toggle" id="confirmPasswordToggle"></i>
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grade">Grade/Class</label>
+                            <select id="grade" name="grade" required>
+                                <option value="">Select your grade</option>
+                                <option value="6">Class 6</option>
+                                <option value="7">Class 7</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                                <option value="11">Class 11</option>
+                                <option value="12">Class 12</option>
+                                <option value="college">College</option>
+                            </select>
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <div class="terms-text">
+                                I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>. I understand that EduVerse will use my information to provide personalized learning experiences.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="signup-btn" id="signupBtn">
+                            <span>Create Account</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <div class="divider">
+                            <span>or</span>
+                        </div>
+
+                        <button type="button" class="google-btn" id="googleSignupBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                            </svg>
+                            <span>Sign up with Google</span>
+                        </button>
+
+                        <div class="login-link">
+                            Already have an account? <a href="index.html">Login here</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Success Message -->
+                <div class="signup-success" id="signupSuccess">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="success-message">Welcome to EduVerse!</div>
+                    <div class="success-subtitle">Your student account has been created successfully.</div>
+                    <button class="login-btn" id="goToDashboard">
+                        <span>Go to Dashboard</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <span>&copy; EduVerse 2025</span>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Help</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form Elements
+        const signupForm = document.getElementById('signupForm');
+        const signupFormContainer = document.getElementById('signupFormContainer');
+        const signupSuccess = document.getElementById('signupSuccess');
+        const signupBtn = document.getElementById('signupBtn');
+        const goToDashboardBtn = document.getElementById('goToDashboard');
+
+        // Input Elements
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const gradeInput = document.getElementById('grade');
+        const termsInput = document.getElementById('terms');
+
+        // Password Toggles
+        const passwordToggle = document.getElementById('passwordToggle');
+        const confirmPasswordToggle = document.getElementById('confirmPasswordToggle');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePasswordToggles();
+            initializeFormValidation();
+            initializeFormSubmission();
+            initializeGoogleSignup();
+        });
+
+        // Password Toggle Functionality
+        function initializePasswordToggles() {
+            passwordToggle.addEventListener('click', function() {
+                togglePasswordVisibility(passwordInput, this);
+            });
+
+            confirmPasswordToggle.addEventListener('click', function() {
+                togglePasswordVisibility(confirmPasswordInput, this);
+            });
+        }
+
+        function togglePasswordVisibility(input, toggle) {
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+            toggle.classList.toggle('fa-eye');
+            toggle.classList.toggle('fa-eye-slash');
+        }
+
+        // Form Validation
+        function initializeFormValidation() {
+            // Real-time validation
+            firstNameInput.addEventListener('blur', validateFirstName);
+            lastNameInput.addEventListener('blur', validateLastName);
+            emailInput.addEventListener('blur', validateEmail);
+            passwordInput.addEventListener('blur', validatePassword);
+            confirmPasswordInput.addEventListener('blur', validateConfirmPassword);
+            gradeInput.addEventListener('change', validateGrade);
+
+            // Clear errors on input
+            [firstNameInput, lastNameInput, emailInput, passwordInput, confirmPasswordInput, gradeInput].forEach(input => {
+                input.addEventListener('input', function() {
+                    clearFieldError(this);
+                });
+            });
+        }
+
+        function validateFirstName() {
+            const firstName = firstNameInput.value.trim();
+            const formGroup = firstNameInput.closest('.form-group');
+
+            if (!firstName) {
+                showFieldError(formGroup, 'First name is required');
+                return false;
+            } else if (firstName.length < 2) {
+                showFieldError(formGroup, 'First name must be at least 2 characters');
+                return false;
+            } else if (!/^[a-zA-Z\s]+$/.test(firstName)) {
+                showFieldError(formGroup, 'First name can only contain letters');
+                return false;
+            } else {
+                showFieldSuccess(formGroup);
+                return true;
+            }
+        }
+
+        function validateLastName() {
+            const lastName = lastNameInput.value.trim();
+            const formGroup = lastNameInput.closest('.form-group');
+
+            if (!lastName) {
+                showFieldError(formGroup, 'Last name is required');
+                return false;
+            } else if (lastName.length < 2) {
+                showFieldError(formGroup, 'Last name must be at least 2 characters');
+                return false;
+            } else if (!/^[a-zA-Z\s]+$/.test(lastName)) {
+                showFieldError(formGroup, 'Last name can only contain letters');
+                return false;
+            } else {
+                showFieldSuccess(formGroup);
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const formGroup = emailInput.closest('.form-group');
+
+            if (!email) {
+                showFieldError(formGroup, 'Email is required');
+                return false;
+            } else if (!emailRegex.test(email)) {
+                showFieldError(formGroup, 'Please enter a valid email address');
+                return false;
+            } else {
+                showFieldSuccess(formGroup);
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            const password = passwordInput.value;
+            const formGroup = passwordInput.closest('.form-group');
+
+            if (!password) {
+                showFieldError(formGroup, 'Password is required');
+                return false;
+            } else if (password.length < 8) {
+                showFieldError(formGroup, 'Password must be at least 8 characters');
+                return false;
+            } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(password)) {
+                showFieldError(formGroup, 'Password must contain uppercase, lowercase, and number');
+                return false;
+            } else {
+                showFieldSuccess(formGroup);
+                return true;
+            }
+        }
+
+        function validateConfirmPassword() {
+            const confirmPassword = confirmPasswordInput.value;
+            const password = passwordInput.value;
+            const formGroup = confirmPasswordInput.closest('.form-group');
+
+            if (!confirmPassword) {
+                showFieldError(formGroup, 'Please confirm your password');
+                return false;
+            } else if (confirmPassword !== password) {
+                showFieldError(formGroup, 'Passwords do not match');
+                return false;
+            } else {
+                showFieldSuccess(formGroup);
+                return true;
+            }
+        }
+
+        function validateGrade() {
+            const grade = gradeInput.value;
+            const formGroup = gradeInput.closest('.form-group');
+
+            if (!grade) {
+                showFieldError(formGroup, 'Please select your grade');
+                return false;
+            } else {
+                showFieldSuccess(formGroup);
+                return true;
+            }
+        }
+
+        function showFieldError(formGroup, message) {
+            formGroup.classList.remove('success');
+            formGroup.classList.add('error');
+            const errorMsg = formGroup.querySelector('.error-message');
+            errorMsg.textContent = message;
+            errorMsg.style.display = 'block';
+        }
+
+        function showFieldSuccess(formGroup) {
+            formGroup.classList.remove('error');
+            formGroup.classList.add('success');
+            const errorMsg = formGroup.querySelector('.error-message');
+            errorMsg.style.display = 'none';
+        }
+
+        function clearFieldError(input) {
+            const formGroup = input.closest('.form-group');
+            formGroup.classList.remove('error', 'success');
+            const errorMsg = formGroup.querySelector('.error-message');
+            errorMsg.style.display = 'none';
+        }
+
+        // Signup Form Handler
+        function initializeSignupForm() {
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleSignup();
+            });
+
+            // Go to Dashboard
+            goToDashboardBtn.addEventListener('click', function() {
+                window.location.href = 'student-dashboard.html';
+            });
+        }
+
+        function handleSignup() {
+            // Validate all fields
+            let isValid = true;
+            
+            if (!validateFirstName()) isValid = false;
+            if (!validateLastName()) isValid = false;
+            if (!validateEmail()) isValid = false;
+            if (!validatePassword()) isValid = false;
+            if (!validateConfirmPassword()) isValid = false;
+            if (!validateGrade()) isValid = false;
+
+            // Check terms agreement
+            if (!termsInput.checked) {
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                return;
+            }
+
+            if (!isValid) return;
+
+            // Show loading state
+            showLoadingState();
+
+            // Simulate signup process
+            setTimeout(() => {
+                const studentData = {
+                    firstName: firstNameInput.value.trim(),
+                    lastName: lastNameInput.value.trim(),
+                    fullName: `${firstNameInput.value.trim()} ${lastNameInput.value.trim()}`,
+                    email: emailInput.value.trim(),
+                    grade: gradeInput.value,
+                    signupDate: new Date().toISOString(),
+                    level: 1,
+                    xp: 0,
+                    streakDays: 0
+                };
+
+                // Store student data in localStorage
+                localStorage.setItem('eduverse_student', JSON.stringify(studentData));
+                localStorage.setItem('eduverse_logged_in', 'true');
+                localStorage.setItem('eduverse_user_role', 'student');
+
+                // Show success message
+                showSuccessMessage(studentData.firstName);
+            }, 2000);
+        }
+
+        function showLoadingState() {
+            const btnText = signupBtn.querySelector('span');
+            const btnIcon = signupBtn.querySelector('i');
+            
+            btnText.textContent = 'Creating Account...';
+            btnIcon.className = 'loading';
+            signupBtn.disabled = true;
+        }
+
+        function showSuccessMessage(firstName) {
+            signupFormContainer.style.display = 'none';
+            signupSuccess.style.display = 'block';
+            
+            // Personalize success message
+            const successMessage = signupSuccess.querySelector('.success-message');
+            successMessage.textContent = `Welcome to EduVerse, ${firstName}!`;
+        }
+
+        // Loading Animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .loading {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                border-top-color: var(--white);
+                animation: spin 1s ease-in-out infinite;
+            }
+            
+            @keyframes spin {
+                to { transform: rotate(360deg); }
+            }
+            
+            .form-group.error input,
+            .form-group.error select {
+                border-color: #ef4444;
+                box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+            }
+            
+            .form-group.success input,
+            .form-group.success select {
+                border-color: #10b981;
+                box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+            }
+            
+            .error-message {
+                color: #ef4444;
+                font-size: 0.8rem;
+                margin-top: 0.25rem;
+                display: none;
+            }
+            
+            .form-group.error .error-message {
+                display: block;
+            }
+            
+            select {
+                width: 100%;
+                padding: 0.875rem 1.25rem;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 12px;
+                font-size: 1rem;
+                transition: var(--transition);
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+                cursor: pointer;
+            }
+            
+            select:focus {
+                outline: none;
+                border-color: var(--student-primary);
+                box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+                background: var(--white);
+                transform: translateY(-1px);
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Google Sign-Up
+        function initializeGoogleSignup() {
+            const googleBtn = document.getElementById('googleSignupBtn');
+            
+            if (googleBtn) {
+                googleBtn.addEventListener('click', function() {
+                    // Show loading state
+                    this.innerHTML = '<div class="loading"></div> Connecting to Google...';
+                    this.disabled = true;
+                    
+                    // Simulate Google OAuth flow
+                    setTimeout(() => {
+                        handleGoogleSignup();
+                    }, 2000);
+                });
+            }
+        }
+
+        function handleGoogleSignup() {
+            // Simulate Google OAuth response
+            const googleUserData = {
+                id: 'google_' + Math.random().toString(36).substr(2, 9),
+                email: 'student@gmail.com',
+                name: 'Google User',
+                given_name: 'Google',
+                family_name: 'User',
+                picture: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face'
+            };
+            
+            // Store Google user data
+            const studentData = {
+                firstName: googleUserData.given_name,
+                lastName: googleUserData.family_name,
+                fullName: googleUserData.name,
+                email: googleUserData.email,
+                grade: 'college',
+                signupDate: new Date().toISOString(),
+                level: 1,
+                xp: 0,
+                streakDays: 0,
+                loginMethod: 'google',
+                googleId: googleUserData.id,
+                profilePicture: googleUserData.picture
+            };
+            
+            localStorage.setItem('eduverse_student', JSON.stringify(studentData));
+            localStorage.setItem('eduverse_logged_in', 'true');
+            localStorage.setItem('eduverse_user_role', 'student');
+            
+            // Show success message
+            const successMessage = document.querySelector('.success-message');
+            const successSubtitle = document.querySelector('.success-subtitle');
+            
+            successMessage.textContent = `Welcome to EduVerse, ${googleUserData.given_name}!`;
+            successSubtitle.textContent = 'Your Google account has been linked successfully.';
+            
+            // Hide form and show success
+            signupFormContainer.style.display = 'none';
+            signupSuccess.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

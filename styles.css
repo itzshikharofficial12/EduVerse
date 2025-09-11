@@ -1,0 +1,1265 @@
+/* Modern SaaS Login Page - EduVerse */
+
+/* CSS Variables */
+:root {
+    /* Base Colors */
+    --white: #ffffff;
+    --black: #000000;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    
+    /* Student Theme - Purple/Blue */
+    --student-primary: #6366f1;
+    --student-secondary: #8b5cf6;
+    --student-accent: #ec4899;
+    
+    /* Teacher Theme - Teal/Green */
+    --teacher-primary: #0d9488;
+    --teacher-secondary: #059669;
+    --teacher-accent: #06b6d4;
+    
+    /* Parent Theme - Orange/Yellow */
+    --parent-primary: #ea580c;
+    --parent-secondary: #f59e0b;
+    --parent-accent: #ef4444;
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-900);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: var(--transition-slow);
+}
+
+/* Background Container */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: var(--transition-slow);
+}
+
+.background-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: var(--transition-slow);
+}
+
+/* Theme-based backgrounds */
+body.student-theme .background-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.teacher-theme .background-gradient {
+    background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%);
+}
+
+body.parent-theme .background-gradient {
+    background: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+}
+
+/* Background Shapes */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    animation: float 20s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 5s;
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 10s;
+}
+
+.shape-4 {
+    width: 100px;
+    height: 100px;
+    top: 30%;
+    right: 30%;
+    animation-delay: 15s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) rotate(90deg);
+    }
+    50% {
+        transform: translateY(0px) rotate(180deg);
+    }
+    75% {
+        transform: translateY(20px) rotate(270deg);
+    }
+}
+
+/* Background Illustrations */
+.background-illustrations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.illustration-element {
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.1);
+    animation: float 25s ease-in-out infinite;
+    transition: var(--transition-slow);
+}
+
+/* Student Elements */
+.student-element:nth-child(1) { top: 15%; left: 15%; animation-delay: 0s; }
+.student-element:nth-child(2) { top: 25%; right: 20%; animation-delay: 8s; }
+.student-element:nth-child(3) { bottom: 30%; left: 10%; animation-delay: 16s; }
+
+/* Teacher Elements */
+.teacher-element:nth-child(4) { top: 20%; left: 25%; animation-delay: 4s; opacity: 0; }
+.teacher-element:nth-child(5) { top: 40%; right: 15%; animation-delay: 12s; opacity: 0; }
+.teacher-element:nth-child(6) { bottom: 25%; left: 20%; animation-delay: 20s; opacity: 0; }
+
+/* Parent Elements */
+.parent-element:nth-child(7) { top: 30%; left: 20%; animation-delay: 6s; opacity: 0; }
+.parent-element:nth-child(8) { top: 50%; right: 25%; animation-delay: 14s; opacity: 0; }
+.parent-element:nth-child(9) { bottom: 20%; left: 30%; animation-delay: 22s; opacity: 0; }
+
+/* Theme-based illustration visibility */
+body.student-theme .student-element { opacity: 1; }
+body.student-theme .teacher-element,
+body.student-theme .parent-element { opacity: 0; }
+
+body.teacher-theme .teacher-element { opacity: 1; }
+body.teacher-theme .student-element,
+body.teacher-theme .parent-element { opacity: 0; }
+
+body.parent-theme .parent-element { opacity: 1; }
+body.parent-theme .student-element,
+body.parent-theme .teacher-element { opacity: 0; }
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    text-decoration: none;
+}
+
+.logo i {
+    font-size: 1.8rem;
+    color: var(--student-primary);
+    transition: var(--transition);
+}
+
+body.teacher-theme .logo i {
+    color: var(--teacher-primary);
+}
+
+body.parent-theme .logo i {
+    color: var(--parent-primary);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--gray-600);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--gray-900);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--student-primary);
+    transition: var(--transition);
+}
+
+body.teacher-theme .nav-link::after {
+    background: var(--teacher-primary);
+}
+
+body.parent-theme .nav-link::after {
+    background: var(--parent-primary);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Main Content */
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 90px 2rem 2rem;
+}
+
+/* Login Card */
+.login-card {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15);
+}
+
+/* Role Selection Tabs */
+.role-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.role-tab {
+    flex: 1;
+    padding: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    color: var(--gray-600);
+    font-weight: 500;
+    position: relative;
+}
+
+.role-tab i {
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.role-tab span {
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.role-tab:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--gray-800);
+}
+
+.role-tab.active {
+    color: var(--white);
+    background: var(--student-primary);
+}
+
+body.teacher-theme .role-tab.active {
+    background: var(--teacher-primary);
+}
+
+body.parent-theme .role-tab.active {
+    background: var(--parent-primary);
+}
+
+/* Login Form Container */
+.login-form-container {
+    padding: 2rem;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    color: var(--gray-600);
+    font-size: 1rem;
+}
+
+/* Login Form */
+.login-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--gray-400);
+    font-size: 1rem;
+    z-index: 1;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: var(--white);
+    transition: var(--transition);
+    outline: none;
+}
+
+.input-container input:focus {
+    border-color: var(--student-primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+body.teacher-theme .input-container input:focus {
+    border-color: var(--teacher-primary);
+    box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.1);
+}
+
+body.parent-theme .input-container input:focus {
+    border-color: var(--parent-primary);
+    box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.password-toggle:hover {
+    color: var(--gray-600);
+}
+
+.input-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--gray-600);
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.forgot-password {
+    color: var(--student-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+body.teacher-theme .forgot-password {
+    color: var(--teacher-primary);
+}
+
+body.parent-theme .forgot-password {
+    color: var(--parent-primary);
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-secondary) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+body.teacher-theme .login-btn {
+    background: linear-gradient(135deg, var(--teacher-primary) 0%, var(--teacher-secondary) 100%);
+    box-shadow: 0 8px 32px rgba(13, 148, 136, 0.3);
+}
+
+body.parent-theme .login-btn {
+    background: linear-gradient(135deg, var(--parent-primary) 0%, var(--parent-secondary) 100%);
+    box-shadow: 0 8px 32px rgba(234, 88, 12, 0.3);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.4);
+}
+
+body.teacher-theme .login-btn:hover {
+    box-shadow: 0 12px 40px rgba(13, 148, 136, 0.4);
+}
+
+body.parent-theme .login-btn:hover {
+    box-shadow: 0 12px 40px rgba(234, 88, 12, 0.4);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.btn-loader {
+    display: none;
+}
+
+.login-btn.loading .btn-text {
+    opacity: 0;
+}
+
+.login-btn.loading .btn-loader {
+    display: block;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-300);
+}
+
+.divider span {
+    padding: 0 1rem;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Social Login */
+.social-login {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.social-btn:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.social-btn svg {
+    flex-shrink: 0;
+}
+
+/* Form Footer */
+.form-footer {
+    text-align: center;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+}
+
+.form-footer p {
+    margin-bottom: 0.5rem;
+}
+
+.signup-link,
+.guest-link {
+    color: var(--student-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+body.teacher-theme .signup-link,
+body.teacher-theme .guest-link {
+    color: var(--teacher-primary);
+}
+
+body.parent-theme .signup-link,
+body.parent-theme .guest-link {
+    color: var(--parent-primary);
+}
+
+.signup-link:hover,
+.guest-link:hover {
+    text-decoration: underline;
+}
+
+/* Success Message */
+.success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.success-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.success-content i {
+    font-size: 3rem;
+    color: #10b981;
+    margin-bottom: 1rem;
+}
+
+.success-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+}
+
+.success-content p {
+    color: var(--gray-600);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 1rem;
+    }
+    
+    .nav {
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+    }
+    
+    .main {
+        padding: 90px 1rem 1rem;
+    }
+    
+    .login-card {
+        max-width: 100%;
+        border-radius: 16px;
+    }
+    
+    .role-tabs {
+        flex-direction: column;
+    }
+    
+    .role-tab {
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.75rem;
+    }
+    
+    .role-tab i {
+        font-size: 1.25rem;
+    }
+    
+    .login-form-container {
+        padding: 1.5rem;
+    }
+    
+    .form-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .social-login {
+        flex-direction: column;
+    }
+    
+    .shape-1 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .shape-2 {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .shape-3 {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .shape-4 {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0 0.5rem;
+    }
+    
+    .nav {
+        display: none;
+    }
+    
+    .main {
+        padding: 80px 0.5rem 0.5rem;
+    }
+    
+    .login-card {
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .login-form-container {
+        padding: 1rem;
+    }
+    
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .role-tab {
+        padding: 0.5rem;
+        gap: 0.25rem;
+    }
+    
+    .role-tab span {
+        font-size: 0.8rem;
+    }
+    
+    .input-container input {
+        padding: 0.875rem 0.875rem 0.875rem 2.5rem;
+    }
+    
+    .input-icon {
+        left: 0.875rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    background: linear-gradient(135deg, var(--student-primary) 0%, var(--student-secondary) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.4);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* Dynamic Button Colors */
+body.teacher-theme .login-btn {
+    background: linear-gradient(135deg, var(--teacher-primary) 0%, var(--teacher-secondary) 100%);
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.3);
+}
+
+body.teacher-theme .login-btn:hover {
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.4);
+}
+
+body.parent-theme .login-btn {
+    background: linear-gradient(135deg, var(--parent-primary) 0%, var(--parent-secondary) 100%);
+    box-shadow: 0 8px 32px rgba(5, 150, 105, 0.3);
+}
+
+body.parent-theme .login-btn:hover {
+    box-shadow: 0 12px 40px rgba(5, 150, 105, 0.4);
+}
+
+body.teacher-theme .form-group input:focus {
+    border-color: var(--teacher-primary);
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+body.parent-theme .form-group input:focus {
+    border-color: var(--parent-primary);
+    box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+body.teacher-theme .forgot-password {
+    color: var(--teacher-primary);
+}
+
+body.parent-theme .forgot-password {
+    color: var(--parent-primary);
+}
+
+/* Dynamic Background Colors */
+body.teacher-theme .left-panel {
+    background: var(--teacher-bg);
+}
+
+body.parent-theme .left-panel {
+    background: var(--parent-bg);
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--gray-600);
+    font-size: 0.85rem;
+}
+
+.signup-link a {
+    color: var(--student-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+body.teacher-theme .signup-link a {
+    color: var(--teacher-primary);
+}
+
+body.parent-theme .signup-link a {
+    color: var(--parent-primary);
+}
+
+/* Google Login Button */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-300);
+}
+
+.divider span {
+    padding: 0 1rem;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.google-btn {
+    width: 100%;
+    padding: 0.7rem 1.2rem;
+    background: var(--white);
+    color: var(--gray-700);
+    border: 2px solid var(--gray-300);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.google-btn:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-400);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.google-btn:active {
+    transform: translateY(0);
+}
+
+.google-btn svg {
+    flex-shrink: 0;
+}
+
+/* Demo Mode */
+.demo-mode {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.demo-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--gray-700);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.demo-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Language Selector */
+.language-selector {
+    text-align: center;
+}
+
+.language-selector select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--gray-700);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 2rem;
+    z-index: 100;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--gray-900);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        flex: none;
+        min-height: 40vh;
+        padding: 1.5rem;
+    }
+
+    .right-panel {
+        flex: none;
+        padding: 1.5rem;
+    }
+
+    .brand-content {
+        max-width: none;
+    }
+
+    .logo h1 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .illustration {
+        margin-bottom: 2rem;
+    }
+
+    .education-graphic {
+        width: 150px;
+        height: 150px;
+    }
+
+    .features {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .role-selection {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .role-card {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 1rem;
+    }
+
+    .role-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+    }
+
+    .role-info {
+        flex: 1;
+    }
+
+    .role-preview {
+        justify-content: flex-start;
+        margin-top: 0.25rem;
+    }
+
+    .left-panel {
+        min-height: 30vh;
+        padding: 1rem;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-bottom: 80px;
+    }
+
+    .right-panel {
+        padding: 1rem;
+    }
+
+    .login-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .role-card {
+        padding: 0.75rem;
+    }
+
+    .form-options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--white);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success/Error States */
+.form-group.error input {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-group.success input {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.role-card:focus,
+.login-btn:focus,
+.demo-btn:focus {
+    outline: 2px solid var(--student-primary);
+    outline-offset: 2px;
+}
+
+body.teacher-theme .role-card:focus,
+body.teacher-theme .login-btn:focus {
+    outline-color: var(--teacher-primary);
+}
+
+body.parent-theme .role-card:focus,
+body.parent-theme .login-btn:focus {
+    outline-color: var(--parent-primary);
+}

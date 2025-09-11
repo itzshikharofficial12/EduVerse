@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - EduVerse</title>
+    <link rel="stylesheet" href="teacher-dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="top-nav" role="banner">
+        <div class="nav-left">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduVerse</span>
+            </div>
+            <h1>Teacher Portal</h1>
+        </div>
+        
+        <div class="nav-center">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search students, classes, materials..." aria-label="Global search">
+            </div>
+        </div>
+        
+        <div class="nav-right">
+            <button class="notification-btn" aria-label="Notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">5</span>
+            </button>
+            
+            <div class="avatar-menu">
+                <button class="avatar-btn" aria-label="User menu">
+                    <div class="avatar-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="avatar-name" id="teacherName">Prof. Smith</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="index.html" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar" role="navigation" aria-label="Main navigation">
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="lectures">
+                    <i class="fas fa-video"></i>
+                    <span>Lectures</span>
+                </a>
+                <a href="#" class="nav-item" data-page="quizzes">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Quizzes & Assignments</span>
+                </a>
+                <a href="#" class="nav-item" data-page="students">
+                    <i class="fas fa-users"></i>
+                    <span>Students</span>
+                </a>
+                <a href="#" class="nav-item" data-page="planner">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Planner/Calendar</span>
+                </a>
+                <a href="#" class="nav-item" data-page="gamification">
+                    <i class="fas fa-trophy"></i>
+                    <span>Gamification</span>
+                </a>
+                <a href="#" class="nav-item" data-page="resources">
+                    <i class="fas fa-book"></i>
+                    <span>Resource Library</span>
+                </a>
+                <a href="#" class="nav-item" data-page="announcements">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Announcements</span>
+                </a>
+                <a href="#" class="nav-item" data-page="ai-insights">
+                    <i class="fas fa-brain"></i>
+                    <span>AI Insights</span>
+                </a>
+            </nav>
+            
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main">
+            <!-- Class Performance Overview -->
+            <section class="performance-section" aria-labelledby="performance-title">
+                <h2 id="performance-title" class="section-title">Class Performance Overview</h2>
+                <div class="performance-grid">
+                    <div class="performance-card">
+                        <div class="card-header">
+                            <div class="card-icon score-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8%
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-value">82.5%</div>
+                            <div class="card-label">Average Class Score</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 82.5%"></div>
+                            </div>
+                            <div class="card-subtitle">Last 30 days</div>
+                        </div>
+                    </div>
+
+                    <div class="performance-card">
+                        <div class="card-header">
+                            <div class="card-icon attendance-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="card-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +3%
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-value">94%</div>
+                            <div class="card-label">Attendance Rate</div>
+                            <div class="card-subtitle">188 of 200 students</div>
+                        </div>
+                    </div>
+
+                    <div class="performance-card">
+                        <div class="card-header">
+                            <div class="card-icon engagement-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="card-trend neutral">
+                                <i class="fas fa-minus"></i>
+                                0%
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-value">76%</div>
+                            <div class="card-label">Student Engagement</div>
+                            <div class="card-subtitle">Active participation</div>
+                        </div>
+                    </div>
+
+                    <div class="performance-card chart-card">
+                        <div class="card-header">
+                            <h3>Weekly Performance Trend</h3>
+                        </div>
+                        <div class="chart-container-small">
+                            <canvas id="weeklyPerformanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions Section -->
+            <section class="quick-actions-section" aria-labelledby="actions-title">
+                <h2 id="actions-title" class="section-title">Quick Actions</h2>
+                <div class="quick-actions-grid">
+                    <button class="action-card add-lecture">
+                        <div class="action-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Add Lecture</h3>
+                            <p>Upload new lecture content</p>
+                        </div>
+                    </button>
+
+                    <button class="action-card create-quiz">
+                        <div class="action-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Create Quiz/Assignment</h3>
+                            <p>Build new assessments</p>
+                        </div>
+                    </button>
+
+                    <button class="action-card post-announcement">
+                        <div class="action-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Post Announcement</h3>
+                            <p>Notify students instantly</p>
+                        </div>
+                    </button>
+
+                    <button class="action-card schedule-lecture">
+                        <div class="action-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Schedule Lecture</h3>
+                            <p>Plan upcoming sessions</p>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Student Insights Section -->
+            <section class="insights-section" aria-labelledby="insights-title">
+                <h2 id="insights-title" class="section-title">Student Insights</h2>
+                <div class="insights-grid">
+                    <!-- Top Performers -->
+                    <div class="insight-card leaderboard-card">
+                        <div class="card-header">
+                            <h3>Top Performers</h3>
+                            <button class="view-all-btn">View All</button>
+                        </div>
+                        <div class="leaderboard-list">
+                            <div class="leaderboard-item rank-1">
+                                <div class="rank">1</div>
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Isha Sharma</span>
+                                        <span class="student-score">96.5%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-badge excellent">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+
+                            <div class="leaderboard-item rank-2">
+                                <div class="rank">2</div>
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Rohan Patel</span>
+                                        <span class="student-score">94.2%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-badge excellent">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+
+                            <div class="leaderboard-item rank-3">
+                                <div class="rank">3</div>
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Meera Singh</span>
+                                        <span class="student-score">91.8%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-badge good">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </div>
+                            </div>
+
+                            <div class="leaderboard-item">
+                                <div class="rank">4</div>
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Kabir Khan</span>
+                                        <span class="student-score">89.3%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-badge good">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </div>
+                            </div>
+
+                            <div class="leaderboard-item">
+                                <div class="rank">5</div>
+                                <div class="student-info">
+                                    <div class="student-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Priya Gupta</span>
+                                        <span class="student-score">87.6%</span>
+                                    </div>
+                                </div>
+                                <div class="performance-badge good">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- At-Risk Students -->
+                    <div class="insight-card at-risk-card">
+                        <div class="card-header">
+                            <h3>Students Needing Attention</h3>
+                            <span class="alert-badge">3</span>
+                        </div>
+                        <div class="at-risk-list">
+                            <div class="at-risk-item">
+                                <div class="student-info">
+                                    <div class="student-avatar warning">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Arjun Kumar</span>
+                                        <span class="risk-reason">Low attendance (65%)</span>
+                                    </div>
+                                </div>
+                                <button class="contact-btn">
+                                    <i class="fas fa-envelope"></i>
+                                </button>
+                            </div>
+
+                            <div class="at-risk-item">
+                                <div class="student-info">
+                                    <div class="student-avatar danger">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Sneha Reddy</span>
+                                        <span class="risk-reason">Failing grades (45%)</span>
+                                    </div>
+                                </div>
+                                <button class="contact-btn">
+                                    <i class="fas fa-envelope"></i>
+                                </button>
+                            </div>
+
+                            <div class="at-risk-item">
+                                <div class="student-info">
+                                    <div class="student-avatar warning">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="student-details">
+                                        <span class="student-name">Vikram Joshi</span>
+                                        <span class="risk-reason">Missing assignments (3)</span>
+                                    </div>
+                                </div>
+                                <button class="contact-btn">
+                                    <i class="fas fa-envelope"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engagement Heatmap -->
+                    <div class="insight-card heatmap-card">
+                        <div class="card-header">
+                            <h3>Weekly Engagement Heatmap</h3>
+                        </div>
+                        <div class="heatmap-container">
+                            <div class="heatmap-grid">
+                                <div class="heatmap-day">
+                                    <span class="day-label">Mon</span>
+                                    <div class="activity-bars">
+                                        <div class="activity-bar high" data-value="85%"></div>
+                                        <div class="activity-bar medium" data-value="72%"></div>
+                                        <div class="activity-bar high" data-value="90%"></div>
+                                        <div class="activity-bar low" data-value="45%"></div>
+                                    </div>
+                                </div>
+                                <div class="heatmap-day">
+                                    <span class="day-label">Tue</span>
+                                    <div class="activity-bars">
+                                        <div class="activity-bar high" data-value="92%"></div>
+                                        <div class="activity-bar high" data-value="88%"></div>
+                                        <div class="activity-bar medium" data-value="76%"></div>
+                                        <div class="activity-bar medium" data-value="68%"></div>
+                                    </div>
+                                </div>
+                                <div class="heatmap-day">
+                                    <span class="day-label">Wed</span>
+                                    <div class="activity-bars">
+                                        <div class="activity-bar medium" data-value="78%"></div>
+                                        <div class="activity-bar high" data-value="85%"></div>
+                                        <div class="activity-bar high" data-value="91%"></div>
+                                        <div class="activity-bar medium" data-value="73%"></div>
+                                    </div>
+                                </div>
+                                <div class="heatmap-day">
+                                    <span class="day-label">Thu</span>
+                                    <div class="activity-bars">
+                                        <div class="activity-bar high" data-value="89%"></div>
+                                        <div class="activity-bar medium" data-value="71%"></div>
+                                        <div class="activity-bar low" data-value="52%"></div>
+                                        <div class="activity-bar medium" data-value="79%"></div>
+                                    </div>
+                                </div>
+                                <div class="heatmap-day">
+                                    <span class="day-label">Fri</span>
+                                    <div class="activity-bars">
+                                        <div class="activity-bar medium" data-value="74%"></div>
+                                        <div class="activity-bar high" data-value="86%"></div>
+                                        <div class="activity-bar high" data-value="93%"></div>
+                                        <div class="activity-bar high" data-value="87%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="heatmap-legend">
+                                <span class="legend-item">
+                                    <div class="legend-color low"></div>
+                                    <span>Low (0-60%)</span>
+                                </span>
+                                <span class="legend-item">
+                                    <div class="legend-color medium"></div>
+                                    <span>Medium (60-80%)</span>
+                                </span>
+                                <span class="legend-item">
+                                    <div class="legend-color high"></div>
+                                    <span>High (80-100%)</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar" role="complementary" aria-label="Upcoming activities and notifications">
+            <!-- Upcoming Activities -->
+            <section class="upcoming-widget" aria-labelledby="upcoming-title">
+                <h3 id="upcoming-title" class="widget-title">Upcoming & Recent Activity</h3>
+                
+                <!-- Mini Calendar -->
+                <div class="mini-calendar">
+                    <div class="calendar-header">
+                        <button class="calendar-nav" aria-label="Previous month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="calendar-month">September 2025</span>
+                        <button class="calendar-nav" aria-label="Next month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">S</div>
+                        <div class="calendar-day-header">M</div>
+                        <div class="calendar-day-header">T</div>
+                        <div class="calendar-day-header">W</div>
+                        <div class="calendar-day-header">T</div>
+                        <div class="calendar-day-header">F</div>
+                        <div class="calendar-day-header">S</div>
+                        
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div>
+                        <div class="calendar-day">4</div>
+                        <div class="calendar-day">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day today has-event">8</div>
+                        <div class="calendar-day has-event">9</div>
+                        <div class="calendar-day">10</div>
+                        <div class="calendar-day has-event">11</div>
+                        <div class="calendar-day">12</div>
+                        <div class="calendar-day">13</div>
+                        <div class="calendar-day">14</div>
+                        <div class="calendar-day">15</div>
+                        <div class="calendar-day">16</div>
+                        <div class="calendar-day">17</div>
+                        <div class="calendar-day">18</div>
+                        <div class="calendar-day">19</div>
+                        <div class="calendar-day">20</div>
+                        <div class="calendar-day">21</div>
+                        <div class="calendar-day">22</div>
+                        <div class="calendar-day">23</div>
+                        <div class="calendar-day">24</div>
+                        <div class="calendar-day">25</div>
+                        <div class="calendar-day">26</div>
+                        <div class="calendar-day">27</div>
+                        <div class="calendar-day">28</div>
+                        <div class="calendar-day">29</div>
+                        <div class="calendar-day">30</div>
+                    </div>
+                </div>
+
+                <!-- Today's Schedule -->
+                <div class="today-schedule">
+                    <h4>Today's Schedule</h4>
+                    <div class="schedule-list">
+                        <div class="schedule-item completed">
+                            <div class="schedule-time">10:00 AM</div>
+                            <div class="schedule-content">
+                                <span class="schedule-title">Math - Calculus II</span>
+                                <span class="schedule-type">Lecture</span>
+                            </div>
+                            <i class="fas fa-check schedule-status"></i>
+                        </div>
+
+                        <div class="schedule-item upcoming">
+                            <div class="schedule-time">2:00 PM</div>
+                            <div class="schedule-content">
+                                <span class="schedule-title">Physics Quiz</span>
+                                <span class="schedule-type">Assessment</span>
+                            </div>
+                            <button class="schedule-action">Start</button>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">4:00 PM</div>
+                            <div class="schedule-content">
+                                <span class="schedule-title">Office Hours</span>
+                                <span class="schedule-type">Consultation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="notifications-panel">
+                    <h4>Recent Notifications</h4>
+                    <div class="notification-list">
+                        <div class="notification-item urgent">
+                            <div class="notification-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <span class="notification-title">Assignment Deadline</span>
+                                <span class="notification-text">5 students haven't submitted</span>
+                                <span class="notification-time">2 hours ago</span>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="notification-content">
+                                <span class="notification-title">New Student Enrolled</span>
+                                <span class="notification-text">Rahul Sharma joined Math class</span>
+                                <span class="notification-time">4 hours ago</span>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="notification-content">
+                                <span class="notification-title">High Performance</span>
+                                <span class="notification-text">Class average improved by 8%</span>
+                                <span class="notification-time">1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <script src="teacher-dashboard.js"></script>
+</body>
+</html>
